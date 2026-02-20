@@ -354,5 +354,14 @@ ex :- gcloud storage buckets create gs://learning-gsc--location=us-central1
 ## **Installing Google Cloud CLI in Windows**
 ```1. Go to cloud.google.com/sdk/docs/install#windows```
 ```2. Download cli installer and install in your device```
-
+```3. There are some commands you need to run in cli```
+1. **Run** --> ```gcloud config set compute/zone us-east1-b```
+2. ```glcoud auth login``` (to login our gcp account)
+3. ```gcloud config set project (project name/project id)```
+It tells the CLI which specific project to work on. It’s like clicking on a folder in Windows—once you "set" the project, you don't have to keep typing the Project ID for every single command.
+4. ```gcloud compute instances create instance_name --machine-type e2-micro```
+This is the command that actually spends your credits and builds a virtual computer.
+5. ```gcloud compute instances describe learning-gcp-clilib```
+It spits out every detail about the machine: its internal and external IP addresses, its status (Running/Stopped), what disk is attached, and when it was created. If something isn't working, this is the first command you run to see what's wrong.
 -------------------------
+
