@@ -365,3 +365,33 @@ This is the command that actually spends your credits and builds a virtual compu
 It spits out every detail about the machine: its internal and external IP addresses, its status (Running/Stopped), what disk is attached, and when it was created. If something isn't working, this is the first command you run to see what's wrong.
 -------------------------
 
+## **Create a bucket using Python and execute it via the CLI**
+**Step 1: Prepare the Environment**
+In your Cloud Shell or Windows Terminal, you need to install the storage library:
+```pip install google-cloud-storage```
+
+**Step 2: Create the Python Script**
+We will use nano to create a file named create_bucket.py
+```nano create_bucket.py```
+__Paste the following code in create_bucket.py__
+```
+from google.cloud import storage
+def create_bucket(bucket_name):
+    # Initialize the Google Cloud Storage client
+    storage_client = storage.Client()
+    # Create the new bucket in a specific region (for Free Tier)
+    bucket = storage_client.create_bucket(bucket_name, location="us-central1")
+    print(f"Success! Bucket {bucket.name} has been created.")
+
+if __name__ == "__main__":
+    # MUST BE GLOBALLY UNIQUE
+    MY_BUCKET = "your-unique-bucket-name-123" 
+    create_bucket(MY_BUCKET)
+```
+**Step 3: Execute the Script in the CLI**
+Now, you simply tell Python to run the file you just made.
+```python3 create_bucket.py```
+
+**How to verify it worked?**
+You can use your new CLI skills to check if the bucket exists without leaving the terminal:
+```gcloud storage buckets list```
