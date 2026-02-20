@@ -348,3 +348,11 @@ The difference is simply Product vs. Container.
 ```gsutil mb gs://storage_name-cli/```
 
 ex :- gcloud storage buckets create gs://learning-gsc--location=us-central1
+
+--------------------------
+
+## **Installing Google Cloud CLI in Windows**
+```1. Go to cloud.google.com/sdk/docs/install#windows```
+```2. Download cli installer and install in your device```
+
+-------------------------
