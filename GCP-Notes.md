@@ -395,3 +395,48 @@ Now, you simply tell Python to run the file you just made.
 **How to verify it worked?**
 You can use your new CLI skills to check if the bucket exists without leaving the terminal:
 ```gcloud storage buckets list```
+
+---------------------------------
+# **VPC**
+A VPC or Virtual Private Cloud is your own private, isolated network inside Google Cloud. Think of it as your own "private data center" where you can launch resources like VM instance, db and containers without exposing them in public internet unless you want to.
+
+## **Why VPS is useful?**
+* Security --> 
+It keeps your resouces invisible to the world, you decide exactly who can enter or leave using Firewall Rules.
+* Internet Connection -->
+Your VMs can talk to each other using "internal IPs" adress which makes them faster , more secure and cheaper than using the public internet.
+
+## **Major Difference Between Traditional VPS and GCP's VPC**
+```
+<table border="1" style="width:100%; border-collapse: collapse; font-family: sans-serif; text-align: left;">
+  <thead>
+    <tr style="background-color: #4285F4; color: white;">
+      <th style="padding: 12px;">Feature</th>
+      <th style="padding: 12px;">Traditional / Other Cloud VPCs</th>
+      <th style="padding: 12px;">Google Cloud (GCP) VPC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; font-weight: bold; background-color: #f9f9f9;">Scope</td>
+      <td style="padding: 10px;"><strong>Regional.</strong> A VPC lives in one city (e.g., New York). To talk to London, you need complex "Peering" or "VPNs."</td>
+      <td style="padding: 10px;"><strong>Global.</strong> One VPC spans the entire world. You can have a VM in India and a VM in the US in the same VPC.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; font-weight: bold; background-color: #f9f9f9;">Subnets</td>
+      <td style="padding: 10px;">Often tied to a specific "Zone" (one building).</td>
+      <td style="padding: 10px;"><strong>Regional.</strong> One subnet covers all zones in a region (e.g., all of us-central1).</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; font-weight: bold; background-color: #f9f9f9;">IP Routing</td>
+      <td style="padding: 10px;">You have to manually set up "Route Tables" to move traffic between regions.</td>
+      <td style="padding: 10px;"><strong>Automatic.</strong> Routing between different countries happens automatically on Google's private fiber network.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; font-weight: bold; background-color: #f9f9f9;">Flexibility</td>
+      <td style="padding: 10px;">Changing a subnet's size is hard and often requires deleting and recreating it.</td>
+      <td style="padding: 10px;"><strong>Expandable.</strong> You can increase your IP range (e.g., from 10 to 100 IPs) with zero downtime.</td>
+    </tr>
+  </tbody>
+</table>
+```
