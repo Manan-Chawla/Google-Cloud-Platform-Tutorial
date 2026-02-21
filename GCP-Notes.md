@@ -407,7 +407,6 @@ It keeps your resouces invisible to the world, you decide exactly who can enter 
 Your VMs can talk to each other using "internal IPs" adress which makes them faster , more secure and cheaper than using the public internet.
 
 ## **Major Difference Between Traditional VPS and GCP's VPC**
-```
 <table border="1" style="width:100%; border-collapse: collapse; font-family: sans-serif; text-align: left;">
   <thead>
     <tr style="background-color: #4285F4; color: white;">
@@ -439,4 +438,5 @@ Your VMs can talk to each other using "internal IPs" adress which makes them fas
     </tr>
   </tbody>
 </table>
-```
+
+
