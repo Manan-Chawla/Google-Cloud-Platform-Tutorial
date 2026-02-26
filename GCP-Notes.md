@@ -440,3 +440,36 @@ Your VMs can talk to each other using "internal IPs" adress which makes them fas
 </table>
 
 
+
+## **Subnet**
+A subdivision of your network that defines a specific range of IP addresses in a single region (like us-central1)
+**Why it’s useful:**
+**Isolation:** You can put your "Public Web Servers" in one subnet and your "Private Databases" in another.
+**Organization:** It helps you group resources by their purpose or location.
+**Security:** You can apply different security rules to different subnets (e.g., "The Database subnet cannot talk to the Internet").
+
+
+## **Creating VPC using GCP**
+**Step 1 : Create VPC Network**
+In the Google Cloud Console, search for VPC network and select it.
+1. Click + Create VPC Network.
+2. Name: Give it a clear name like my-custom-vpc.
+3. Subnet creation mode: Select Custom.
+
+**Step 2: Create a Subnet**
+1. Under New subnet, give it a name like subnet-us-central.
+2. Region: Choose us-central1 (Iowa) to stay in the Free Tier.
+3. IPv4 range: Enter 10.0.1.0/24.
+Tip: This range gives you 256 internal IP addresses (from 10.0.1.0 to 10.0.1.255), which is plenty for a beginner project!
+4. Click Done.
+
+**Step 3: Configure Firewall Rules (The "Security Guard")**
+1. Scroll down to the Firewall rules section
+2. Check these :- 
+```allow-custom:``` Allows internal communication between your VMs.
+```allow-ssh:``` Allows you to use the black SSH terminal window.
+```allow-icmp:``` Allows you to "ping" your instances to see if they are alive.
+
+**Step 4: Finalize**
+1. Dynamic routing mode: Leave it as Regional (best for simple projects).
+2. Click Create.
