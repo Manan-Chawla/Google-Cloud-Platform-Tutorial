@@ -67,4 +67,29 @@ Let's put one person on each island and see if they can shout to each other.
 The Test:
 SSH into VM-Alpha.
 Find the Internal IP of VM-Beta (it will start with 10.2.0.x).
+
 In the terminal of VM-Alpha, type: ping -c 4 [INTERNAL_IP_OF_VM_BETA]
+
+
+
+
+
+
+The "Real-Life" Grand Finale:
+Right now, you are just "knocking on the door" (Ping). Let's actually serve a file from the hidden VM to the public VM.
+
+SSH into beta-vm (the one with no external IP—you might need to use "Identity Aware Proxy" or SSH from Alpha).
+
+Install a web server on Beta:
+
+Bash
+sudo apt update && sudo apt install apache2 -y
+Create a "Secret Data" file on Beta:
+
+Bash
+echo "This is secret data from the Beta VPC!" | sudo tee /var/www/html/data.txt
+Go back to your alpha-vm SSH window and try to "steal" that data across the bridge:
+
+Bash
+curl http://10.2.0.2/data.txt
+If you see the text "This is secret data...", you have officially moved from "Pinging" to "Data Architecture."
