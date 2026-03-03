@@ -29,7 +29,7 @@
 1. Click on Compute Engine > VM Instances and click Create
 2. Name : uploader-vm
 3. Machine-Type : e2-micro
-4. Click on Identity and API Access
+4. From side bar click on ***Security** then Click on Identity and API Access
    Under service account, change **default** to the **drop-box-uploader**
 5. Click on Create
 
