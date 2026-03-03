@@ -494,7 +494,8 @@ On other hand binding is the link between a principle(user,group or service acco
 
 ## **Phase 2 : Define Policy and Binding**
 Now write following command in shell in order to provide anyone access to your bucket:-
-``` gcloud storage buckets add-iam-policy-binding gs://family-vault \
+```
+gcloud storage buckets add-iam-policy-binding gs://family-vault \
     --member="user:someone's@gmail.com" \
     --role="roles/storage.objectViewer"
 ```
@@ -524,3 +525,4 @@ gcloud storage cp message.txt gs://family-vault-1709456789```
 send the link to the user you added :- 
 https://console.cloud.google.com/storage/browser/family-vault-1709456789
 4. It's important that person you are sharing file has to be open the link with the gmail we added in our policy and binding.
+
