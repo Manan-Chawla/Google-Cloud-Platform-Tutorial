@@ -473,3 +473,54 @@ Tip: This range gives you 256 internal IP addresses (from 10.0.1.0 to 10.0.1.255
 **Step 4: Finalize**
 1. Dynamic routing mode: Leave it as Regional (best for simple projects).
 2. Click Create.
+
+----------------
+
+# **IAM Policy and Binding**
+An IAM policy is a collection of rules that defines who has what type of access, it is made up of one or more Binding.
+On other hand binding is the link between a principle(user,group or service account), a role or permission and the resource like a VM,Bucket or project.
+
+## **How is it useful?**
+1. Granular Control :- You can create a binding for a specific folder instead of the whole project.
+2. Principle of least privilege :- You can ensure a service account only has the exact binding it needs like "Storage Object Creator" role you can use for your bucket.
+3. Centralized Security :- Instead of changing passwords for every person, you just update policy to add or remove a binding.
+
+# **Mini Project for IAM Policy and Binding**
+## **Phase 1 : Foundation**
+1. Open Cloud shell from top of GCP Console.
+2. Run the following command to create a bucket :-
+   ```gcloud storage buckets create gs://family-vault-1709456789 --location=us-central1```
+3. Wait for 1 min and you will see a success message.
+
+## **Phase 2 : Define Policy and Binding**
+Now write following command in shell in order to provide anyone access to your bucket:-
+``` gcloud storage buckets add-iam-policy-binding gs://family-vault \
+    --member="user:someone's@gmail.com" \
+    --role="roles/storage.objectViewer"
+```
+
+To verify this step run the command :-
+``` gcloud storage buckets get-iam-policy gs://family-vault-1709456789```
+
+When we are doing these command it actually creating a JSON format file which contains all info we did like this :-
+{
+  "bindings": [
+    {
+      "role": "roles/storage.objectViewer",
+      "members": [
+        "user:someone's@gmail.com"
+      ]
+    }
+  ],
+  "version": 1
+}
+
+## **Phase 3 : Testing**
+1. open cloud shell
+2. Write down following code :-
+   ```echo "This is a poetic line for my sister." > message.txt
+gcloud storage cp message.txt gs://family-vault-1709456789```
+3. Verify the access :-
+send the link to the user you added :- 
+https://console.cloud.google.com/storage/browser/family-vault-1709456789
+4. It's important that person you are sharing file has to be open the link with the gmail we added in our policy and binding.
