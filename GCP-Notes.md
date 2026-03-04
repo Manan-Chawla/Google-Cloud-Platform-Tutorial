@@ -529,3 +529,52 @@ https://console.cloud.google.com/storage/browser/family-vault-1709456789
 4. It's important that person you are sharing file has to be open the link with the gmail we added in our policy and binding.
 
 
+-------------------------
+
+# **Custom VM in GCP [Linux and Window Based]**
+Let's say client approach us and demand for a custom machine with specific configuration like 4 Vcpu and 16 gb of storage disk.
+If you are using azure or aws they wont allow to create such custom as they have fixed size and all.
+To check the configuration you need to check both disk config.
+AWS --> ```https://aws.amazon.com/ec2/instance-types/general-purpose/```
+By using this link you can see what kind of confiugration and types AWS provide.
+
+## **Creating a custom VM in LINUX**
+Client requriements --> 6cpu with 16gb storage
+1. Open GCP Console.
+2. Click on Compute Engine > VM instances
+3. Config VM :-
+   name : learning-gcp-linux-gce
+   Engine Config : Genral Purpose
+   Series : e2
+   Machine type : e2-micro | or we can select Custom in order to fullfill customer or client's requirement
+4. If you choose custom machine type then follow steps :-
+   Select Cores : 2 --> this will allow to create 6 VCPUs
+   Select Memory : 3 --> allow to write custom storage like client's need
+   **The major flaw of this that this machine will cost so high**
+5. Select External IP Address's network service tier to standard in networking part of VM.
+6. Now if you want to create apache server installed already in this vm without opening the SSH.
+   Click on Management
+   In Automation write down the following script :-
+   ```
+   #!/bin/sh
+   sudo apt get update
+   sudo apt get install apcahe2 -y
+   ```
+Now just click on create or done to proceed.
+
+
+## **Creating a custom vm in WINDOWS**
+1. Open Compute Engine
+2. Click on VM instance
+3. Click on create
+4. name : learing-gcp-window-gce
+   region : us-central1(lowa)a
+   Machine : e2
+   machine type : e2-micro or standard (4 VCPU and 16Gb memory)
+5. Click on boot disk from side bar and click on change :-
+   Choose OS : Window
+   Version : desktop expereince v-19
+   Boot type : standard
+   Firewall : allow http traffic
+6. Now just click on create but it won't create a VM, the reason GCP already change the service which means you can't launch Window based VM
+7. As Window based cost more so GCP offer it to only high pricing and not allow to use for GDG member or even in free trial.
