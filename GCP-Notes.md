@@ -606,3 +606,13 @@ It captures exactly what was on the disk at that specific second, even if the VM
 2. click on Snapshot Schedules
 3. Set it run daily at a time like 2:00AM
 4. Set a Retention Policy , so we dont have to pay for older backup forever
+
+------------------------
+
+# **GCP Image**
+It is a custom image is a resuable blueprint use to create new VM instance, it typically include OS and bootloader with pre-installed software with specific configuration and files.
+
+## **Why do we use it?**
+1. If you need 10 more server for a specific project like "fin-flow", you dont have to set them up one by one. You can one image to launch them all instantly.
+2. It ensures every server you create is exactly the same, which is crucial for professional cloud infrastructure.
+3. Unlike snapshot, custom image are designed to shared across different GCP.
