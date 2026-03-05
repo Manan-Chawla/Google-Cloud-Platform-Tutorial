@@ -578,3 +578,31 @@ Now just click on create or done to proceed.
    Firewall : allow http traffic
 6. Now just click on create but it won't create a VM, the reason GCP already change the service which means you can't launch Window based VM
 7. As Window based cost more so GCP offer it to only high pricing and not allow to use for GDG member or even in free trial.
+
+------------------
+# **SnapShot**
+Snapshot is an incremental backup of a persistent disk, one of the most crucial tool we use in GCP or any other cloud platform.
+Snapshot is the full copy, but every snapshot after that only saves the changes or difference since the last one.
+It captures exactly what was on the disk at that specific second, even if the VM is still running.
+
+## **why do we use it?**
+1. If you accidentally delete a critical file or your database gets corrupted, you can "roll back" to a previous version in minutes.
+2. Before you  make a big change to your code you can take a snapshot so if anything happens you can get that version back.
+3. You can use a snapshot of your current VM to create a second, identical VM in different region.
+
+
+## **Create snapshot**
+1. Go to compute engine
+2. Click on snapshots
+3. click on create snapshot
+4. name : pre-update-backup
+5. Select disk : Use any VM you created earlier or create a new one before creating this snapshot
+6. Location : Multi-region (safer for any disasters)
+7. click on create
+
+
+## **Automated Snapshots**
+1. In console click on snapshots
+2. click on Snapshot Schedules
+3. Set it run daily at a time like 2:00AM
+4. Set a Retention Policy , so we dont have to pay for older backup forever
